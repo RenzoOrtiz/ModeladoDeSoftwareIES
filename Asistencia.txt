@@ -1,7 +1,10 @@
 Asistencia 5/05:
-<<<<<<< HEAD
 
+
+
+Maria Rojas
+Guaquinchay Federico
+Fernando Gimenez
 Mauricio Quiroga
-Chivo Oribe
-=======
->>>>>>> 48713c13236ac7be20425c08d631249cba657bef
+
+>>>>>>> 09b5d0e6118ec76529ccfdea04f2a7b3d1f43f69

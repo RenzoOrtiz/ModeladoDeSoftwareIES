@@ -5,6 +5,14 @@ Asistencia 5/05:
 Maria Rojas
 Guaquinchay Federico
 Fernando Gimenez
-Mauricio Quiroga
+<<<<<<< HEAD
+
 
 >>>>>>> 09b5d0e6118ec76529ccfdea04f2a7b3d1f43f69
+=======
+Humbert Belen
+>>>>>>> f2e0581bc8264e615485ef0f1ac757bc644df38e
+
+
+
+Mauricio Quiroga

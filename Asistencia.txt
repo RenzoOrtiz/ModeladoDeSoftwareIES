@@ -1,4 +1,7 @@
 Asistencia 5/05:
+<<<<<<< HEAD
 
 Mauricio Quiroga
 Chivo Oribe
+=======
+>>>>>>> 48713c13236ac7be20425c08d631249cba657bef

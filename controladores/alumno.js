@@ -5,7 +5,7 @@ const {request, response } = require('express')
     const alumnoGet = async(req = request, res = response) => {
         try {
 
-            res.json({ "Alumnos": ["",""]});
+            res.json({ "Alumnos": ["Federico Guaquinchay",""]});
     
             } catch(error) {
                 console.error(error)

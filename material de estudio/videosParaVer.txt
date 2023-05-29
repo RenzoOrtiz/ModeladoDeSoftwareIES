@@ -1,5 +1,0 @@
-Ver los siguientes videos, del curso profesional de Git y GitHub:
-	
-	10 - ¿Qué es el staging y los repositorios Ciclo básico de trabajo
-	11 - ¿Qué es un Branch (rama) y cómo funciona un Merge en Git
-	14 - Flujo de trabajo básico con un repositorio remoto

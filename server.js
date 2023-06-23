@@ -9,7 +9,7 @@ class Server {
     constructor() {
         this.app = express();
         this.port = process.env.PORT;//3000;
-        this.alumno = '/api/alumno';
+        this.cliente = '/api/cliente';
         this.app.use(express.json());
 
         // Rutas de mi aplicación
@@ -17,7 +17,7 @@ class Server {
     }
 
     rutas() {
-        this.app.use(this.alumno, require('./rutas/alumno'))
+        this.app.use(this.cliente, require('./routes/cliente'))
     }
 
     //Se indica el puerto en donde está corriendo la aplicación
@@ -27,6 +27,10 @@ class Server {
         });
     }
 
+    /*
+    // Se llama al objeto que inicializa las clases necesarias como los perfiles y permisos al iniciar la base de datos
+    dbinit;
+    */
 }
 
 module.exports = Server;

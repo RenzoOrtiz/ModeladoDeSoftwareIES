@@ -36,12 +36,12 @@ const clientePost = async (req = request, res = response) => {
 //Se devuelve a través de una solicitud "get" todos los clientes existentes, siempre y cuando no hayan sido dados de baja.
 const clienteGet = async (req = request, res = response) => {
     try {
-        const postCliente = await Cliente.findAll({
+        const getCliente = await Cliente.findAll({
             where: {
                 fechaBajaCliente: null
             }
         })
-        res.json({ postCliente })
+        res.json({ getCliente })
 
     } catch (error) {
         console.error(error)
@@ -84,7 +84,7 @@ const clienteDelete = async (req = request, res = response) => {
                 returning: true,
                 plain: true
             })
-        res.json({ usuario: deleteCliente })
+        res.json({ usuario: deleteCliente[1] })
 
     } catch (error) {
         console.error(error)

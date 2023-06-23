@@ -1,6 +1,6 @@
 
 const Sequelize = require('sequelize');
-//require('./models/asociation');
+//require('../asociation');
 
 
         const sequelize = new Sequelize(`postgres://postgres:${process.env.PGPASS}@localhost:5432/${process.env.PGDB}`,{

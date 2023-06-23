@@ -18,6 +18,8 @@ class Server {
 
     rutas() {
         this.app.use(this.cliente, require('./routes/cliente'))
+        this.app.use(this.cliente, require('./routes/categoria'))
+        this.app.use(this.cliente, require('./routes/categoriaCliente'))
     }
 
     //Se indica el puerto en donde está corriendo la aplicación

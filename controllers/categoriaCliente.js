@@ -16,7 +16,7 @@ const categoriaClientePost = async (req = request, res = response) => {
     try {
         const postCategoriaCliente = new CategoriaCliente({
             "idCategoriaCliente": req.body.idCategoriaCliente,//nanoid.nanoid(),
-            "fechaInicioCategoriaCliente": moment(new Date(), 'DD-MM-YYYY'),
+            "fechaInicioCategoriaCliente": req.body.fechaInicioCategoriaCliente,
             "fechaFinCategoriaCliente": req.body.fechaFinCategoriaCliente,
             "fkCategoriaClienteCliente": req.body.fkCategoriaClienteCliente,
             "fkCategoriaClienteCategoria": req.body.fkCategoriaClienteCategoria,
@@ -39,7 +39,7 @@ const categoriaClienteGet = async (req = request, res = response) => {
                 fechaBajaCategoriaCliente: null
             }
         })
-        res.json({ postCategoriaClienteGet })
+        res.json({ categoriaCliente: postCategoriaClienteGet })
 
     } catch (error) {
         console.error(error)
@@ -87,6 +87,23 @@ const categoriaClienteDelete = async (req = request, res = response) => {
         console.error(error)
     }
 }
+
+//Se devuelve a través de una solicitud "get" todos las categoriaCliente existentes, siempre y cuando no hayan sido dados de baja.
+const categoriasDeClientePorFecha = async (req = request, res = response) => {
+    try {
+        const postCategoriaClienteGet = await CategoriaCliente.findAll({
+            where: {
+                fechaBajaCategoriaCliente: null
+            }
+        })
+        res.json({ categoriaCliente: postCategoriaClienteGet })
+
+    } catch (error) {
+        console.error(error)
+    }
+    
+}
+
 
 
 //Se exportan los métodos a utilizar

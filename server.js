@@ -9,7 +9,7 @@ class Server {
     constructor() {
         this.app = express();
         this.port = process.env.PORT;//3000;
-        this.cliente = '/api/cliente';
+        this.api = '/api';
         this.app.use(express.json());
 
         // Rutas de mi aplicación
@@ -17,9 +17,9 @@ class Server {
     }
 
     rutas() {
-        this.app.use(this.cliente, require('./routes/cliente'))
-        this.app.use(this.cliente, require('./routes/categoria'))
-        this.app.use(this.cliente, require('./routes/categoriaCliente'))
+        this.app.use(this.api, require('./routes/cliente'))
+        this.app.use(this.api, require('./routes/categoria'))
+        this.app.use(this.api, require('./routes/categoriaCliente'))
     }
 
     //Se indica el puerto en donde está corriendo la aplicación

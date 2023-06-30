@@ -2,6 +2,9 @@
 const { request, response } = require('express');
 //const nanoid = require('nanoid');
 const CategoriaCliente = require('../models/categoriaCliente');
+const Cliente = require('../models/cliente');
+const Categoria = require('../models/categoria');
+
 const moment = require('moment');
 //const bcryptjs = require('bcrypt');
 //const Perfil = require('../models/perfil');
@@ -91,12 +94,44 @@ const categoriaClienteDelete = async (req = request, res = response) => {
 //Se devuelve a través de una solicitud "get" todos las categoriaCliente existentes, siempre y cuando no hayan sido dados de baja.
 const categoriasDeClientePorFecha = async (req = request, res = response) => {
     try {
-        const postCategoriaClienteGet = await CategoriaCliente.findAll({
+
+        const cliente = await Cliente.findOne({
             where: {
-                fechaBajaCategoriaCliente: null
+                numCliente: req.body.numCliente,
+                fechaBajaCliente: null
             }
         })
-        res.json({ categoriaCliente: postCategoriaClienteGet })
+        console.log("Cliente:" )
+        console.log(cliente)
+
+        const categoriasClientes = await CategoriaCliente.findAll({
+            where: {
+                fkCategoriaClienteCliente: cliente.dataValues.idCliente,
+                fechaBajaCategoriaCliente: null,
+            }
+        })
+        console.log("Cambios de categoria que ha tenido el cliente:" )
+        console.log(categoriasClientes)        
+
+        let categoriaDelCliente
+        for (i in categoriasClientes) {
+            if ((categoriasClientes[i].dataValues.fechaInicioCategoriaCliente <= req.body.fechaCambio) && (categoriasClientes[i].dataValues.fechaFinCategoriaCliente >= req.body.fechaCambio)){
+                categoriaDelCliente = categoriasClientes[i];
+            }
+        }
+        console.log("Cambio de categoria que coincide con la fecha:" )
+        console.log(categoriaDelCliente)
+
+        const categoria = await Categoria.findOne({
+            where: {
+                idCategoria: categoriaDelCliente.fkCategoriaClienteCategoria,
+                fechaBajaCategoria: null
+            }
+        })
+        console.log("Categoria que tenia al momento de la fecha:" )
+        console.log(categoria)
+
+        res.json({ categoria: categoria})
 
     } catch (error) {
         console.error(error)
@@ -111,5 +146,6 @@ module.exports = {
     categoriaClientePost,
     categoriaClienteGet,
     categoriaClientePut,
-    categoriaClienteDelete
+    categoriaClienteDelete,
+    categoriasDeClientePorFecha
 }
